@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio | Data Academy</title>
+    <title>Portfolio | Victor Martinez</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
@@ -32,6 +32,16 @@
             overflow-x: hidden;
         }
 
+        /* Textura de fondo */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: radial-gradient(circle at 2px 2px, rgba(255,255,255,0.03) 1px, transparent 0);
+            background-size: 40px 40px;
+            z-index: -1;
+        }
+
         .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
 
         header { min-height: 40vh; display: flex; align-items: center; padding: 4rem 0 2rem; }
@@ -44,9 +54,14 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
 
+        .profile-photo-container { position: relative; width: fit-content; }
         .profile-photo {
-            width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 50%;
-            border: 2px solid var(--border-color);
+            width: 280px; height: 280px; object-fit: cover; border-radius: 4px;
+            border: 1px solid var(--border-color); position: relative; z-index: 2;
+        }
+        .photo-frame {
+            position: absolute; top: 15px; left: 15px; right: -15px; bottom: -15px;
+            border: 1px solid var(--accent-color); z-index: 1; border-radius: 4px;
         }
 
         section { margin-bottom: 6rem; position: relative; }
@@ -57,77 +72,61 @@
         }
 
         .carousel-wrapper { position: relative; width: 100%; }
-
         .carousel-container {
-            display: flex;
-            gap: var(--gap);
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            padding: 1.5rem 0;
-            scrollbar-width: none;
+            display: flex; gap: var(--gap); overflow-x: auto;
+            scroll-behavior: smooth; padding: 1rem 0; scrollbar-width: none;
             scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
         }
-
         .carousel-container::-webkit-scrollbar { display: none; }
 
         .carousel-btn {
-            position: absolute;
-            top: 50%; transform: translateY(-50%);
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            color: white; width: 50px; height: 50px;
-            border-radius: 50%; cursor: pointer; z-index: 10;
-            display: flex; align-items: center; justify-content: center;
-            opacity: 1; transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: var(--surface-color); border: 1px solid var(--border-color);
+            color: white; width: 50px; height: 50px; border-radius: 50%;
+            cursor: pointer; z-index: 10; display: flex; align-items: center;
+            justify-content: center; opacity: 1; transition: all 0.3s ease;
         }
-
-        .carousel-btn:hover { background: var(--accent-color); transform: translateY(-50%) scale(1.1); border-color: var(--accent-color); }
+        .carousel-btn:hover { background: var(--accent-color); border-color: var(--accent-color); transform: translateY(-50%) scale(1.1); }
         .btn-prev { left: -1.5rem; }
         .btn-next { right: -1.5rem; }
 
         .card {
-            background: var(--surface-color);
-            border: 1px solid var(--border-color);
-            flex: 0 0 calc((100% - (2 * var(--gap))) / 3);
-            height: 380px;
-            border-radius: 12px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            display: flex;
-            flex-direction: column;
+            background: var(--surface-color); border: 1px solid var(--border-color);
+            flex: 0 0 calc((100% - (2 * var(--gap))) / 3); height: 440px;
+            border-radius: 12px; overflow: hidden; cursor: pointer;
+            transition: all 0.4s ease; display: flex; flex-direction: column;
             scroll-snap-align: start;
         }
-
         .card:hover { border-color: var(--accent-color); background: #1c1c22; transform: translateY(-5px); }
-        .card-img { width: 100%; height: 160px; background: #222; object-fit: cover; }
-        .card-body { padding: 1.5rem; }
+        .card-img { width: 100%; height: 180px; background: #222; object-fit: cover; }
+        .card-body { padding: 1.5rem; display: flex; flex-direction: column; height: 100%; }
         .card-tag { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-color); margin-bottom: 0.8rem; display: block; }
         .card h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 0.6rem; }
-        .card p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+        .card p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; margin-bottom: auto; }
 
-        @media (max-width: 1024px) {
-            .card { flex: 0 0 calc((100% - var(--gap)) / 2); } 
+        .btn-more {
+            margin-top: 1.5rem; font-family: var(--font-mono); font-size: 0.75rem;
+            color: var(--accent-color); text-decoration: none; display: inline-flex;
+            align-items: center; gap: 0.5rem; transition: gap 0.3s ease;
         }
+        .btn-more:hover { gap: 0.8rem; text-decoration: underline; }
 
+        @media (max-width: 1024px) { .card { flex: 0 0 calc((100% - var(--gap)) / 2); } }
         @media (max-width: 768px) {
             .hero-grid { grid-template-columns: 1fr; text-align: center; }
-            .profile-photo { width: 150px; margin: 0 auto; }
+            .profile-photo-container { margin: 0 auto 2rem; }
             .card { flex: 0 0 100%; } 
             .carousel-btn { display: none; }
         }
 
         .modal {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--modal-bg); z-index: 1000;
-            display: none; justify-content: center; align-items: center;
-            backdrop-filter: blur(10px); padding: 1rem;
+            background: var(--modal-bg); z-index: 1000; display: none;
+            justify-content: center; align-items: center; backdrop-filter: blur(10px); padding: 1rem;
         }
         .modal.active { display: flex; animation: fadeIn 0.3s ease; }
         .modal-content {
-            background: var(--surface-color); max-width: 700px; width: 100%;
+            background: var(--surface-color); max-width: 750px; width: 100%;
             border-radius: 16px; border: 1px solid var(--border-color);
             position: relative; padding: 2.5rem; max-height: 90vh; overflow-y: auto;
         }
@@ -146,10 +145,11 @@
                 <div class="hero-content">
                     <span style="font-family: var(--font-mono); color: var(--accent-color); font-size: 0.8rem; letter-spacing: 2px;">ESTUDIANTE ACADEMIA DATA XIDERAL</span>
                     <h1>VICTOR MARTINEZ</h1>
-                    <p style="color: var(--text-dim); max-width: 500px;">Estudiante de la academia Xideral. Me enfoco en el desarrollo web backend utilizando Java y Spring Boot. En mis proyectos integro Docker para la gestión de contenedores y trabajo con herramientas como JPA y Spring Batch para la construcción de APIs y el procesamiento de datos.</p>
+                    <p style="color: var(--text-dim); max-width: 550px;">Estudiante de la academia Xideral. Me enfoco en el desarrollo web backend utilizando Java y Spring Boot. En mis proyectos integro Docker para la gestión de contenedores y trabajo con herramientas como JPA y Spring Batch para la construcción de APIs y el procesamiento de datos.</p>
                 </div>
                 <div class="profile-photo-container">
-                    <img src="img_perfil.jpeg" alt="Foto de Perfil" class="profile-photo">
+                    <img src="assets/images/img_perfil.jpeg" alt="Foto de Perfil" class="profile-photo">
+                    <div class="photo-frame"></div>
                 </div>
             </div>
         </header>
@@ -163,9 +163,14 @@
             <div class="carousel-wrapper">
                 <button class="carousel-btn btn-prev" onclick="manualScroll('track-tareas', -1)">&#10094;</button>
                 <div class="carousel-container" id="track-tareas">
-                    <article class="card" onclick="openModal('Lorem Ipsum 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'https://via.placeholder.com/800x400', 'Lorem')">
+                    <article class="card" onclick="openModal('Lorem Ipsum 2', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.', 'https://via.placeholder.com/400x250', 'Ipsum', 'proyecto_tarea.html')">
                         <img src="https://via.placeholder.com/400x250" class="card-img">
-                        <div class="card-body"><span class="card-tag">Lorem Ipsum</span><h3>Lorem Ipsum Dolor</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p></div>
+                        <div class="card-body">
+                            <span class="card-tag">Sit Amet</span>
+                            <h3>Consectetur Adipiscing</h3>
+                            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p>
+                            <a href="proyecto_tarea.html" class="btn-more" onclick="event.stopPropagation()">VER MÁS ↗</a>
+                        </div>
                     </article>
                 </div>
                 <button class="carousel-btn btn-next" onclick="manualScroll('track-tareas', 1)">&#10095;</button>
@@ -181,9 +186,14 @@
             <div class="carousel-wrapper">
                 <button class="carousel-btn btn-prev" onclick="manualScroll('track-clase', -1)">&#10094;</button>
                 <div class="carousel-container" id="track-clase">
-                    <article class="card" onclick="openModal('Lorem Ipsum 2', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.', 'https://via.placeholder.com/800x400', 'Ipsum')">
-                        <img src="https://via.placeholder.com/400x250" class="card-img">
-                        <div class="card-body"><span class="card-tag">Sit Amet</span><h3>Consectetur Adipiscing</h3><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p></div>
+                    <article class="card" onclick="openModal('Conociendo Jupyter Notebook y principios de Python', 'Para nuestra segunda sesión creamos un entorno virtual de Python en nuestra instancia de AWS, dentro del entorno instalamos Jupyter Notebook para apoyarnos de este para las practicas.<br><br>Al iniciar Jupyter Notebook se nos mostró como es que funciona el entorno de este y como interactuar con python desde aqui, vimos los tipos de datos, como imprimir las variables, el uso de las listas y diccionarios, estructuras de control y como generar funciones.<br><br>Por ultimo se propuso un ejercicio que podemos ver en el Notebook dando click en el enlace de abajo.', 'assets/images/ejercicios_clase/ejercicio_clase_12032026.png', 'Jupyter Notebook, python', 'assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026.html')">
+                        <img src="assets/images/ejercicios_clase/ejercicio_clase_12032026.png" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">Jupyter Notebook, python</span>
+                            <h3>Conociendo Jupyter Notebook y principios de Python</h3>
+                            <p>Se nos presentó una explicación de como es que opera Jupyter Notebook, de la misma mera vimos principios fundamentales de python.</p>
+                            <a href="assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026.html" class="btn-more" onclick="event.stopPropagation()">Ver Jupyter NoteBook↗</a>
+                        </div>
                     </article>
                 </div>
                 <button class="carousel-btn btn-next" onclick="manualScroll('track-clase', 1)">&#10095;</button>
@@ -196,14 +206,15 @@
                 <h2>Proyecto Final</h2>
                 <span style="font-family: var(--font-mono); color: var(--text-dim);">03</span>
             </div>
-            <div style="background: var(--surface-color); padding: 3rem; border-radius: 16px; border: 1px solid var(--border-color); cursor: pointer; transition: border-color 0.3s;" 
-                 onmouseover="this.style.borderColor='var(--accent-color)'" 
-                 onmouseout="this.style.borderColor='var(--border-color)'"
-                 onclick="openModal('Proyecto Final Lorem', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.', 'https://via.placeholder.com/1200x600', 'Capstone')">
+            <article style="background: var(--surface-color); padding: 3rem; border-radius: 16px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s;" 
+                 onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-5px)'" 
+                 onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'"
+                 onclick="openModal('Proyecto Final Lorem', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.', 'https://via.placeholder.com/1200x600', 'Capstone', 'proyecto_final.html')">
                 <span class="card-tag">Final Project</span>
                 <h3 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 1rem;">Lorem Ipsum Capstone</h3>
-                <p style="color: var(--text-dim); max-width: 700px;">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-            </div>
+                <p style="color: var(--text-dim); max-width: 700px; margin-bottom: 2rem;">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                <a href="proyecto_final.html" class="btn-more" style="font-size: 1rem; border: 1px solid var(--border-color); padding: 0.8rem 1.5rem; border-radius: 4px; display: inline-flex;" onclick="event.stopPropagation()">VER PROYECTO COMPLETO ↗</a>
+            </article>
         </section>
 
         <footer style="display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 4rem 0; border-top: 1px solid var(--border-color);">
@@ -223,9 +234,10 @@
         <div class="modal-content" onclick="event.stopPropagation()">
             <button class="close-modal" onclick="closeModal()">&times;</button>
             <span class="card-tag" id="modalTag">Categoría</span>
-            <h2 id="modalTitle" style="font-family: var(--font-display); font-size: 2rem; margin-top: 1rem;">Título</h2>
-            <img src="" id="modalImg" style="width: 100%; border-radius: 8px; margin: 1.5rem 0;">
-            <p id="modalDesc" style="color: var(--text-dim); font-size: 1rem; line-height: 1.6;"></p>
+            <h2 id="modalTitle" style="font-family: var(--font-display); font-size: 2.2rem; margin-top: 1rem;">Título</h2>
+            <img src="" id="modalImg" style="width: 100%; border-radius: 8px; margin: 1.5rem 0; border: 1px solid var(--border-color);">
+            <div id="modalDesc" style="color: var(--text-dim); font-size: 1rem; line-height: 1.6; margin-bottom: 2rem;"></div>
+            <a href="#" id="modalLink" class="btn-more" style="font-size: 1rem; border: 1px solid var(--border-color); padding: 0.8rem 1.5rem; border-radius: 4px; display: inline-flex;">Ver Jupyter NoteBook↗</a>
         </div>
     </div>
 
@@ -238,11 +250,20 @@
             track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
         }
 
-        function openModal(title, desc, imgSrc, tag) {
+        function openModal(title, desc, imgSrc, tag, url) {
             document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalDesc').innerHTML = desc;
             document.getElementById('modalImg').src = imgSrc;
             document.getElementById('modalTag').innerText = tag;
+            
+            const modalLink = document.getElementById('modalLink');
+            if(url && url.trim() !== '') {
+                modalLink.href = url;
+                modalLink.style.display = 'inline-flex';
+            } else {
+                modalLink.style.display = 'none';
+            }
+            
             document.getElementById('projectModal').classList.add('active');
             document.body.style.overflow = 'hidden';
         }
