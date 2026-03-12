@@ -1,1 +1,242 @@
-<p>Hola desde github</p>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Data Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0a0a0c;
+            --surface-color: #16161a;
+            --accent-color: #6366f1;
+            --text-main: #e2e8f0;
+            --text-dim: #94a3b8;
+            --border-color: #2d2d33;
+            --font-display: 'DM Serif Display', serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --modal-bg: rgba(10, 10, 12, 0.95);
+            --gap: 2rem;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+
+        header { min-height: 40vh; display: flex; align-items: center; padding: 4rem 0 2rem; }
+        .hero-grid { display: grid; grid-template-columns: 1.5fr 1fr; gap: 4rem; align-items: center; }
+        .hero-content h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            line-height: 1.1; margin-bottom: 1rem;
+            background: linear-gradient(to right, #fff, var(--accent-color));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .profile-photo {
+            width: 100%; aspect-ratio: 1/1; object-fit: cover; border-radius: 50%;
+            border: 2px solid var(--border-color);
+        }
+
+        section { margin-bottom: 6rem; position: relative; }
+        .section-header {
+            display: flex; align-items: baseline; gap: 2rem;
+            margin-bottom: 2rem; border-bottom: 1px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .carousel-wrapper { position: relative; width: 100%; }
+
+        .carousel-container {
+            display: flex;
+            gap: var(--gap);
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding: 1.5rem 0;
+            scrollbar-width: none;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .carousel-container::-webkit-scrollbar { display: none; }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%; transform: translateY(-50%);
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            color: white; width: 50px; height: 50px;
+            border-radius: 50%; cursor: pointer; z-index: 10;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 1; transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        .carousel-btn:hover { background: var(--accent-color); transform: translateY(-50%) scale(1.1); border-color: var(--accent-color); }
+        .btn-prev { left: -1.5rem; }
+        .btn-next { right: -1.5rem; }
+
+        .card {
+            background: var(--surface-color);
+            border: 1px solid var(--border-color);
+            flex: 0 0 calc((100% - (2 * var(--gap))) / 3);
+            height: 380px;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            scroll-snap-align: start;
+        }
+
+        .card:hover { border-color: var(--accent-color); background: #1c1c22; transform: translateY(-5px); }
+        .card-img { width: 100%; height: 160px; background: #222; object-fit: cover; }
+        .card-body { padding: 1.5rem; }
+        .card-tag { font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent-color); margin-bottom: 0.8rem; display: block; }
+        .card h3 { font-family: var(--font-display); font-size: 1.3rem; margin-bottom: 0.6rem; }
+        .card p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.4; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
+
+        @media (max-width: 1024px) {
+            .card { flex: 0 0 calc((100% - var(--gap)) / 2); } 
+        }
+
+        @media (max-width: 768px) {
+            .hero-grid { grid-template-columns: 1fr; text-align: center; }
+            .profile-photo { width: 150px; margin: 0 auto; }
+            .card { flex: 0 0 100%; } 
+            .carousel-btn { display: none; }
+        }
+
+        .modal {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--modal-bg); z-index: 1000;
+            display: none; justify-content: center; align-items: center;
+            backdrop-filter: blur(10px); padding: 1rem;
+        }
+        .modal.active { display: flex; animation: fadeIn 0.3s ease; }
+        .modal-content {
+            background: var(--surface-color); max-width: 700px; width: 100%;
+            border-radius: 16px; border: 1px solid var(--border-color);
+            position: relative; padding: 2.5rem; max-height: 90vh; overflow-y: auto;
+        }
+        .close-modal { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--text-dim); font-size: 2rem; cursor: pointer; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        footer { padding: 3rem 0; text-align: center; border-top: 1px solid var(--border-color); color: var(--text-dim); font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <span style="font-family: var(--font-mono); color: var(--accent-color); font-size: 0.8rem; letter-spacing: 2px;">ESTUDIANTE ACADEMIA DATA XIDERAL</span>
+                    <h1>VICTOR MARTINEZ</h1>
+                    <p style="color: var(--text-dim); max-width: 500px;">Estudiante de la academia Xideral. Me enfoco en el desarrollo web backend utilizando Java y Spring Boot. En mis proyectos integro Docker para la gestión de contenedores y trabajo con herramientas como JPA y Spring Batch para la construcción de APIs y el procesamiento de datos.</p>
+                </div>
+                <div class="profile-photo-container">
+                    <img src="img_perfil.jpeg" alt="Foto de Perfil" class="profile-photo">
+                </div>
+            </div>
+        </header>
+
+        <!-- SECCIÓN TAREAS -->
+        <section>
+            <div class="section-header">
+                <h2>Tareas Realizadas</h2>
+                <span style="font-family: var(--font-mono); color: var(--text-dim);">01</span>
+            </div>
+            <div class="carousel-wrapper">
+                <button class="carousel-btn btn-prev" onclick="manualScroll('track-tareas', -1)">&#10094;</button>
+                <div class="carousel-container" id="track-tareas">
+                    <article class="card" onclick="openModal('Lorem Ipsum 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.', 'https://via.placeholder.com/800x400', 'Lorem')">
+                        <img src="https://via.placeholder.com/400x250" class="card-img">
+                        <div class="card-body"><span class="card-tag">Lorem Ipsum</span><h3>Lorem Ipsum Dolor</h3><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p></div>
+                    </article>
+                </div>
+                <button class="carousel-btn btn-next" onclick="manualScroll('track-tareas', 1)">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- SECCIÓN TRABAJOS EN CLASE -->
+        <section>
+            <div class="section-header">
+                <h2>Ejercicios en Clase</h2>
+                <span style="font-family: var(--font-mono); color: var(--text-dim);">02</span>
+            </div>
+            <div class="carousel-wrapper">
+                <button class="carousel-btn btn-prev" onclick="manualScroll('track-clase', -1)">&#10094;</button>
+                <div class="carousel-container" id="track-clase">
+                    <article class="card" onclick="openModal('Lorem Ipsum 2', 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.', 'https://via.placeholder.com/800x400', 'Ipsum')">
+                        <img src="https://via.placeholder.com/400x250" class="card-img">
+                        <div class="card-body"><span class="card-tag">Sit Amet</span><h3>Consectetur Adipiscing</h3><p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.</p></div>
+                    </article>
+                </div>
+                <button class="carousel-btn btn-next" onclick="manualScroll('track-clase', 1)">&#10095;</button>
+            </div>
+        </section>
+
+        <footer style="display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 4rem 0; border-top: 1px solid var(--border-color);">
+            <div style="display: flex; gap: 1.5rem;">
+                <a href="https://github.com/VictorMartinezDev" target="_blank" style="color: var(--text-dim); transition: color 0.3s;" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-dim)'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/victormartinezdev" target="_blank" style="color: var(--text-dim); transition: color 0.3s;" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-dim)'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </a>
+            </div>
+            <p style="color: var(--text-dim); font-size: 0.8rem; opacity: 0.6;">&copy; 2026 | Victor Martinez</p>
+        </footer>
+    </div>
+
+    <div class="modal" id="projectModal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-modal" onclick="closeModal()">&times;</button>
+            <span class="card-tag" id="modalTag">Categoría</span>
+            <h2 id="modalTitle" style="font-family: var(--font-display); font-size: 2rem; margin-top: 1rem;">Título</h2>
+            <img src="" id="modalImg" style="width: 100%; border-radius: 8px; margin: 1.5rem 0;">
+            <p id="modalDesc" style="color: var(--text-dim); font-size: 1rem; line-height: 1.6;"></p>
+        </div>
+    </div>
+
+    <script>
+        function manualScroll(id, direction) {
+            const track = document.getElementById(id);
+            const card = track.querySelector('.card');
+            if (!card) return;
+            const cardWidth = card.offsetWidth + parseInt(getComputedStyle(track).gap);
+            track.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+        }
+
+        function openModal(title, desc, imgSrc, tag) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalImg').src = imgSrc;
+            document.getElementById('modalTag').innerText = tag;
+            document.getElementById('projectModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('projectModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+    </script>
+</body>
+</html>
