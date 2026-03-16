@@ -1,24 +1,33 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio | Victor Martinez</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400;600&family=JetBrains+Mono:wght@400&display=swap"
+        rel="stylesheet">
     <!-- Vinculación de estilos externos -->
     <link rel="stylesheet" href="styles/style.css">
 </head>
+
 <body>
 
     <div class="container">
         <header>
             <div class="hero-grid">
                 <div class="hero-content">
-                    <span style="font-family: var(--font-mono); color: var(--accent-color); font-size: 0.8rem; letter-spacing: 2px;">ESTUDIANTE ACADEMIA DATA XIDERAL</span>
+                    <span
+                        style="font-family: var(--font-mono); color: var(--accent-color); font-size: 0.8rem; letter-spacing: 2px;">ESTUDIANTE
+                        ACADEMIA DATA XIDERAL</span>
                     <h1>VICTOR MARTINEZ</h1>
-                    <p style="color: var(--text-dim); max-width: 550px;">Estudiante de la academia Xideral. Me enfoco en el desarrollo web backend utilizando Java y Spring Boot. En mis proyectos integro Docker para la gestión de contenedores y trabajo con herramientas como JPA y Spring Batch para la construcción de APIs y el procesamiento de datos.</p>
+                    <p style="color: var(--text-dim); max-width: 550px;">Estudiante de la academia Xideral. Me enfoco en
+                        el desarrollo web backend utilizando Java y Spring Boot. En mis proyectos integro Docker para la
+                        gestión de contenedores y trabajo con herramientas como JPA y Spring Batch para la construcción
+                        de APIs y el procesamiento de datos.</p>
                 </div>
                 <div class="profile-photo-container">
                     <img src="assets/images/img_perfil.jpeg" alt="Foto de Perfil" class="profile-photo">
@@ -36,39 +45,64 @@
             <div class="carousel-wrapper">
                 <button class="carousel-btn btn-prev" onclick="manualScroll('track-tareas', -1)">&#10094;</button>
                 <div class="carousel-container" id="track-tareas">
-                    <article class="card" onclick="openModal('Conociendo Jupyter Notebook y principios de Python', 'Para nuestra segunda sesión creamos un entorno virtual de Python en nuestra instancia de AWS, dentro del entorno instalamos Jupyter Notebook para apoyarnos de este para las practicas.<br><br>Al iniciar Jupyter Notebook se nos mostró como es que funciona el entorno de este y como interactuar con python desde aqui, vimos los tipos de datos, como imprimir las variables, el uso de las listas y diccionarios, estructuras de control y como generar funciones.<br><br>Por ultimo se propuso un ejercicio que podemos ver en el Notebook dando click en el enlace de abajo.', 'assets/images/ejercicios_clase/ejercicio_clase_12032026.png', 'Jupyter Notebook, python', 'assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026.html')">
+                    <article class="card"
+                        onclick="openModal('Conociendo Jupyter Notebook y principios de Python', 'Para nuestra segunda sesión creamos un entorno virtual de Python en nuestra instancia de AWS, dentro del entorno instalamos Jupyter Notebook para apoyarnos de este para las practicas.<br><br>Al iniciar Jupyter Notebook se nos mostró como es que funciona el entorno de este y como interactuar con python desde aqui, vimos los tipos de datos, como imprimir las variables, el uso de las listas y diccionarios, estructuras de control y como generar funciones.<br><br>Por ultimo se propuso un ejercicio que podemos ver en el Notebook dando click en el enlace de abajo.', 'assets/images/ejercicios_clase/ejercicio_clase_12032026.png', 'Jupyter Notebook, python', 'assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026.html')">
                         <img src="assets/images/ejercicios_clase/ejercicio_clase_12032026.png" class="card-img">
                         <div class="card-body">
                             <span class="card-tag">Jupyter Notebook, python</span>
                             <h3>Conociendo Jupyter Notebook y principios de Python</h3>
-                            <p>Se nos presentó una explicación de como es que opera Jupyter Notebook, de la misma mera vimos principios fundamentales de python.</p>
-                            <a href="assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026.html" class="btn-more" onclick="event.stopPropagation()">Ver Jupyter NoteBook↗</a>
+                            <p>Se nos presentó una explicación de como es que opera Jupyter Notebook, de la misma mera
+                                vimos principios fundamentales de python.</p>
+                            <a href="assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026.html" class="btn-more"
+                                onclick="event.stopPropagation()">Ver Jupyter NoteBook↗</a>
                         </div>
                     </article>
-                    <article class="card" onclick="openModal('Code Combat', 'Se nos dio la tarea de jugar Code Combat que es un juega al mismo tiempo que se aprende a programar, para este casi usamos como lenguaje a python.', 'assets/images/codeCombat.png', 'codeCombat, python', '')">
+                    <article class="card"
+                        onclick="openModal('Code Combat', 'Se nos dio la tarea de jugar Code Combat que es un juega al mismo tiempo que se aprende a programar, para este casi usamos como lenguaje a python.', 'assets/images/codeCombat.png', 'codeCombat, python', '')">
                         <img src="assets/images/codeCombat.png" class="card-img">
                         <div class="card-body">
                             <span class="card-tag">CodeCombat, python</span>
                             <h3>Jugando y aprendiendo Python</h3>
-                            <p>Se nos presentó una forma de aprender python mientras jugamos un juego muy entretenido llamado CodeCombat</p>
+                            <p>Se nos presentó una forma de aprender python mientras jugamos un juego muy entretenido
+                                llamado CodeCombat</p>
                         </div>
                     </article>
-                    <article class="card" onclick="openModal('Usando Pandas para visualizar y trabajar con datos', 'Como parte de las tareas para practicar el uso de la libreria de pandas en python se nos dio la tarea de aplicar algo similar al primer ejercicio pero ahora haciendo uso de pandas. Los conceptos puestos en practica fueron el crear un data frame apartir de un diccionario de python, usar los metodos sum() y max() para trabajar con cierta columna y obtener algo de esta, por ultimo el uso de un ciclo for iterando una columna e imprimir algo si el campo de la columna cumple cierta condición.', 'assets/images/ejercicios_clase/ejercicio_clase_12032026_v2.png', 'Jupyter Notebook, python, pandas', 'assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026v2.html')">
+                    <article class="card"
+                        onclick="openModal('Usando Pandas para visualizar y trabajar con datos', 'Como parte de las tareas para practicar el uso de la libreria de pandas en python se nos dio la tarea de aplicar algo similar al primer ejercicio pero ahora haciendo uso de pandas. Los conceptos puestos en practica fueron el crear un data frame apartir de un diccionario de python, usar los metodos sum() y max() para trabajar con cierta columna y obtener algo de esta, por ultimo el uso de un ciclo for iterando una columna e imprimir algo si el campo de la columna cumple cierta condición.', 'assets/images/ejercicios_clase/ejercicio_clase_12032026_v2.png', 'Jupyter Notebook, python, pandas', 'assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026v2.html')">
                         <img src="assets/images/ejercicios_clase/ejercicio_clase_12032026_v2.png" class="card-img">
                         <div class="card-body">
                             <span class="card-tag">Jupyter Notebook, python, pandas</span>
                             <h3>Usando Pandas para visualizar y trabajar con datos</h3>
                             <p>Hicimos uso de la libreria de pandas para trabajar con datos y obtener algo de estos.</p>
-                            <a href="assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026v2.html" class="btn-more" onclick="event.stopPropagation()">Ver Jupyter NoteBook↗</a>
+                            <a href="assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026v2.html"
+                                class="btn-more" onclick="event.stopPropagation()">Ver Jupyter NoteBook↗</a>
                         </div>
                     </article>
-                    <article class="card" onclick="openModal('Usando DataSet titanic y aplicando uso de pandas', 'Como tarea de practica se nos dio un dataSet que contiene información de los pasajeros del titanic y usar pandas para trabajar con los datos.<br><br>La tarea concistio en exportar el CSV a jupyter notebook, dentro del notebook usar pandas para comvertilo en un dataframe y realizar distintas operaciones sobre el dataframe como aplicar el metodo info(), describe(), means(), valueAcount(), validar columanas y modificar columnas.', 'assets/images/ejercicios_clase/ejercicio_clase_12032026_v3.png', 'Jupyter Notebook, python, pandas', 'assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026v3.html')">
+                    <article class="card"
+                        onclick="openModal('Usando DataSet titanic y aplicando uso de pandas', 'Como tarea de practica se nos dio un dataSet que contiene información de los pasajeros del titanic y usar pandas para trabajar con los datos.<br><br>La tarea concistio en exportar el CSV a jupyter notebook, dentro del notebook usar pandas para comvertilo en un dataframe y realizar distintas operaciones sobre el dataframe como aplicar el metodo info(), describe(), means(), valueAcount(), validar columanas y modificar columnas.', 'assets/images/ejercicios_clase/ejercicio_clase_12032026_v3.png', 'Jupyter Notebook, python, pandas', 'assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026v3.html')">
                         <img src="assets/images/ejercicios_clase/ejercicio_clase_12032026_v3.png" class="card-img">
                         <div class="card-body">
                             <span class="card-tag">Jupyter Notebook, python, pandas</span>
                             <h3>Usando DataSet titanic y aplicando uso de pandas</h3>
-                            <p>Practica de pandas usando dataSet titanic para implementar distintas propiedades de pandas</p>
-                            <a href="assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026v3.html" class="btn-more" onclick="event.stopPropagation()">Ver Jupyter NoteBook↗</a>
+                            <p>Practica de pandas usando dataSet titanic para implementar distintas propiedades de
+                                pandas</p>
+                            <a href="assets/ejercicios_jupyter/ejercicios_clase/ejercicio12032026v3.html"
+                                class="btn-more" onclick="event.stopPropagation()">Ver Jupyter NoteBook↗</a>
+                        </div>
+                    </article>
+                    <article class="card"
+                        onclick="openModal('Limpiador de dataSet usando StreamLit'
+                        , 'El proposito de la tares es generar el codigo en python para limpiar un dataSet que contena filas duplicadas y con valores nulos. Hicimos uso de la libreria StreamLit para poder mostrar los resultados desde una pagina web.<br><br>Se deja de muestra la logica para limpiar el dataSet en el link de abajo.'
+                        , 'assets/images/ejercicios_tarea/ejercicio15032026.png'
+                        , 'Jupyter Notebook, python, pandas, StreamLit'
+                        , 'assets/ejercicios_jupyter/ejercicios_tarea/Tarea14032026.html')">
+                        <img src="assets/images/ejercicios_tarea/ejercicio15032026.png" class="card-img">
+                        <div class="card-body">
+                            <span class="card-tag">Limpiador de dataSet usando StreamLit</span>
+                            <h3>Limpiador de dataSet usando StreamLit</h3>
+                            <p>Limpiador de dataSet, usando pandas y StreamLit para obtener archivos y mostrar resultados.</p>
+                            <a href="assets/ejercicios_jupyter/ejercicios_tarea/Tarea14032026.html"
+                                class="btn-more" onclick="event.stopPropagation()">Ver Jupyter NoteBook↗</a>
                         </div>
                     </article>
                 </div>
@@ -85,13 +119,15 @@
             <div class="carousel-wrapper">
                 <button class="carousel-btn btn-prev" onclick="manualScroll('track-clase', -1)">&#10094;</button>
                 <div class="carousel-container" id="track-clase">
-                    <article class="card" onclick="openModal('Ejercicio en equipo usando dataSet de spotity', 'El ejercicio concistio en limpiar el dataSet de forma que solo nos quedaramos con un dataframe de canciones unicas.', 'assets/images/ejercicios_clase/ejercicio_clase_13032026.png', 'Jupyter Notebook, python, pandas', 'assets/ejercicios_jupyter/ejercicios_clase/ejercicio13032026.html')">
+                    <article class="card"
+                        onclick="openModal('Ejercicio en equipo usando dataSet de spotity', 'El ejercicio concistio en limpiar el dataSet de forma que solo nos quedaramos con un dataframe de canciones unicas.', 'assets/images/ejercicios_clase/ejercicio_clase_13032026.png', 'Jupyter Notebook, python, pandas', 'assets/ejercicios_jupyter/ejercicios_clase/ejercicio13032026.html')">
                         <img src="assets/images/ejercicios_clase/ejercicio_clase_13032026.png" class="card-img">
                         <div class="card-body">
                             <span class="card-tag">Jupyter Notebook, python, pandas</span>
                             <h3>Ejercicio en equipo usando dataSet de spotity</h3>
                             <p>Ejercicio de practica con dataSet de Spotify</p>
-                            <a href="assets/ejercicios_jupyter/ejercicios_clase/ejercicio13032026.html" class="btn-more" onclick="event.stopPropagation()">Ver Jupyter NoteBook↗</a>
+                            <a href="assets/ejercicios_jupyter/ejercicios_clase/ejercicio13032026.html" class="btn-more"
+                                onclick="event.stopPropagation()">Ver Jupyter NoteBook↗</a>
                         </div>
                     </article>
                 </div>
@@ -105,24 +141,47 @@
                 <h2>Proyecto Final</h2>
                 <span style="font-family: var(--font-mono); color: var(--text-dim);">03</span>
             </div>
-            <article style="background: var(--surface-color); padding: 3rem; border-radius: 16px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s;" 
-                 onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-5px)'" 
-                 onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'"
-                 onclick="openModal('Proyecto Final Lorem', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.', 'https://via.placeholder.com/1200x600', 'Capstone', 'proyecto_final.html')">
+            <article
+                style="background: var(--surface-color); padding: 3rem; border-radius: 16px; border: 1px solid var(--border-color); cursor: pointer; transition: all 0.3s;"
+                onmouseover="this.style.borderColor='var(--accent-color)'; this.style.transform='translateY(-5px)'"
+                onmouseout="this.style.borderColor='var(--border-color)'; this.style.transform='translateY(0)'"
+                onclick="openModal('Proyecto Final Lorem', 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.', 'https://via.placeholder.com/1200x600', 'Capstone', 'proyecto_final.html')">
                 <span class="card-tag">Final Project</span>
-                <h3 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 1rem;">Lorem Ipsum Capstone</h3>
-                <p style="color: var(--text-dim); max-width: 700px; margin-bottom: 2rem;">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
-                <a href="proyecto_final.html" class="btn-more" style="font-size: 1rem; border: 1px solid var(--border-color); padding: 0.8rem 1.5rem; border-radius: 4px; display: inline-flex;" onclick="event.stopPropagation()">VER PROYECTO COMPLETO ↗</a>
+                <h3 style="font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 1rem;">Lorem Ipsum
+                    Capstone</h3>
+                <p style="color: var(--text-dim); max-width: 700px; margin-bottom: 2rem;">At vero eos et accusamus et
+                    iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos
+                    dolores et quas molestias excepturi sint occaecati cupiditate non provident.</p>
+                <a href="proyecto_final.html" class="btn-more"
+                    style="font-size: 1rem; border: 1px solid var(--border-color); padding: 0.8rem 1.5rem; border-radius: 4px; display: inline-flex;"
+                    onclick="event.stopPropagation()">VER PROYECTO COMPLETO ↗</a>
             </article>
         </section>
 
-        <footer style="display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 4rem 0; border-top: 1px solid var(--border-color);">
+        <footer
+            style="display: flex; flex-direction: column; align-items: center; gap: 1rem; padding: 4rem 0; border-top: 1px solid var(--border-color);">
             <div style="display: flex; gap: 1.5rem;">
-                <a href="https://github.com/VictorMartinezDev" target="_blank" style="color: var(--text-dim); transition: color 0.3s;" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-dim)'">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                <a href="https://github.com/VictorMartinezDev" target="_blank"
+                    style="color: var(--text-dim); transition: color 0.3s;"
+                    onmouseover="this.style.color='var(--accent-color)'"
+                    onmouseout="this.style.color='var(--text-dim)'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path
+                            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                        </path>
+                    </svg>
                 </a>
-                <a href="https://www.linkedin.com/in/victormartinezdev" target="_blank" style="color: var(--text-dim); transition: color 0.3s;" onmouseover="this.style.color='var(--accent-color)'" onmouseout="this.style.color='var(--text-dim)'">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                <a href="https://www.linkedin.com/in/victormartinezdev" target="_blank"
+                    style="color: var(--text-dim); transition: color 0.3s;"
+                    onmouseover="this.style.color='var(--accent-color)'"
+                    onmouseout="this.style.color='var(--text-dim)'">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                        <rect x="2" y="9" width="4" height="12"></rect>
+                        <circle cx="4" cy="4" r="2"></circle>
+                    </svg>
                 </a>
             </div>
             <p style="color: var(--text-dim); font-size: 0.8rem; opacity: 0.6;">&copy; 2026 | Victor Martinez</p>
@@ -133,14 +192,20 @@
         <div class="modal-content" onclick="event.stopPropagation()">
             <button class="close-modal" onclick="closeModal()">&times;</button>
             <span class="card-tag" id="modalTag">Categoría</span>
-            <h2 id="modalTitle" style="font-family: var(--font-display); font-size: 2.2rem; margin-top: 1rem;">Título</h2>
-            <img src="" id="modalImg" style="width: 100%; border-radius: 8px; margin: 1.5rem 0; border: 1px solid var(--border-color);">
-            <div id="modalDesc" style="color: var(--text-dim); font-size: 1rem; line-height: 1.6; margin-bottom: 2rem;"></div>
-            <a href="proyecto.html" id="modalLink" class="btn-more" style="font-size: 1rem; border: 1px solid var(--accent-color); padding: 0.8rem 1.5rem; border-radius: 4px; display: inline-flex;">Ver Jupyter NoteBook↗</a>
+            <h2 id="modalTitle" style="font-family: var(--font-display); font-size: 2.2rem; margin-top: 1rem;">Título
+            </h2>
+            <img src="" id="modalImg"
+                style="width: 100%; border-radius: 8px; margin: 1.5rem 0; border: 1px solid var(--border-color);">
+            <div id="modalDesc" style="color: var(--text-dim); font-size: 1rem; line-height: 1.6; margin-bottom: 2rem;">
+            </div>
+            <a href="proyecto.html" id="modalLink" class="btn-more"
+                style="font-size: 1rem; border: 1px solid var(--accent-color); padding: 0.8rem 1.5rem; border-radius: 4px; display: inline-flex;">Ver
+                Jupyter NoteBook↗</a>
         </div>
     </div>
 
     <!-- Vinculación de scripts externos -->
     <script src="scripts/script.js"></script>
 </body>
+
 </html>
